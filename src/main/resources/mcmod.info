@@ -1,0 +1,15 @@
+[
+  {
+    "modid": "basescanner",
+    "name": "Base Scanner",
+    "description": "Automatically scans the Pika Network OpFactions world for blue base claims using /f map.",
+    "version": "1.0",
+    "mcversion": "1.8.9",
+    "url": "",
+    "authorList": ["ItsNeDhairya"],
+    "credits": "",
+    "logoFile": "",
+    "screenshots": [],
+    "dependencies": []
+  }
+]
