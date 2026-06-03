@@ -19,13 +19,15 @@ jobs:
           java-version: '8'
           distribution: 'temurin'
 
-      - name: Cache Gradle
-        uses: actions/cache@v4
-        with:
-          path: |
-            ~/.gradle/caches
-            ~/.gradle/wrapper
-          key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*') }}
+      - name: Pre-download Forge userdev
+        run: |
+          CACHE="$HOME/.gradle/caches/minecraft/net/minecraftforge/forge/1.8.9-11.15.1.2318/stable/22"
+          mkdir -p "$CACHE"
+          curl -L "https://maven.minecraftforge.net/net/minecraftforge/forge/1.8.9-11.15.1.2318/forge-1.8.9-11.15.1.2318-userdev.jar" \
+               -o "$CACHE/forge-userdev.jar" || \
+          curl -L "http://files.minecraftforge.net/maven/net/minecraftforge/forge/1.8.9-11.15.1.2318/forge-1.8.9-11.15.1.2318-userdev.jar" \
+               -o "$CACHE/forge-userdev.jar"
+          echo "Userdev jar: $(ls -lh $CACHE/forge-userdev.jar)"
 
       - name: Make gradlew executable
         run: chmod +x gradlew
